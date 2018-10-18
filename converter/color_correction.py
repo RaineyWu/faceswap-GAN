@@ -32,7 +32,7 @@ def color_hist_match(src_im, tar_im, color_space="RGB"):
     matched = np.clip(matched, 0, 255)
     
     if color_space.lower() != "rgb":
-        result = trans_color_space(result.astype(np.uint8), color_space, rev=True)
+        matched = trans_color_space(matched.astype(np.uint8), color_space, rev=True)
     return matched
 
 def adain(src_im, tar_im, eps=1e-7, color_space="RGB"):
@@ -75,4 +75,3 @@ def trans_color_space(im, color_space, rev=False):
         trans_clr_spc = rev_clr_spc if rev else clr_spc
         im = cv2.cvtColor(im, trans_clr_spc)
     return im
-    
